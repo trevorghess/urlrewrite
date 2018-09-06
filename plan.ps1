@@ -11,7 +11,9 @@ function Invoke-Unpack {
 }
 
 function Invoke-Install {
-    Copy-Item $HAB_CACHE_SRC_PATH/rewrite_amd64.msi $pkg_prefix/rewrite_amd64.msi
+    New-Item -ItemType Directory -Path $pkg_prefix/bin
+    Copy-Item $PLAN_CONTEXT/config/install_urlrewrite.ps1 $pkg_prefix/install_urlrewrite.ps1 -Recurse
+    Copy-Item $HAB_CACHE_SRC_PATH/rewrite_amd64.msi $pkg_prefix/bin/rewrite_amd64.msi -Recurse
 }
 
 
